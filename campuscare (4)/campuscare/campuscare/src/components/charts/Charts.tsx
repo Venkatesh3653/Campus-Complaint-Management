@@ -1,0 +1,9 @@
+import { Bar, BarChart, CartesianGrid, Cell, Area, AreaChart, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import type { Dash } from '../../types'
+const COLORS = ['#94a3b8', '#38bdf8', '#f59e0b', '#10b981', '#8b5cf6']
+const tip = { contentStyle: { borderRadius: 8, border: '1px solid #e2e8f0', fontSize: 12 } }
+export const ChartCard = ({ title, children }: { title: string; children: React.ReactNode }) => <div className="card p-5"><h3 className="mb-3 text-sm font-semibold">{title}</h3><div className="h-56">{children}</div></div>
+export const StatusDonut = ({ d }: { d: Dash }) => <ResponsiveContainer><PieChart><Pie data={d.byStatus} dataKey="value" innerRadius={50} outerRadius={80} paddingAngle={2} stroke="none">{d.byStatus.map((_, i) => <Cell key={i} fill={COLORS[i]} />)}</Pie><Tooltip {...tip} /></PieChart></ResponsiveContainer>
+export const CategoryBars = ({ d }: { d: Dash }) => <ResponsiveContainer><BarChart data={d.byCategory} layout="vertical" margin={{ left: 20 }}><CartesianGrid horizontal={false} strokeOpacity={0.15} /><XAxis type="number" allowDecimals={false} fontSize={11} /><YAxis type="category" dataKey="name" width={90} fontSize={11} /><Tooltip {...tip} /><Bar dataKey="value" fill="#6366f1" radius={4} /></BarChart></ResponsiveContainer>
+export const TrendArea = ({ d }: { d: Dash }) => <ResponsiveContainer><AreaChart data={d.trend}><CartesianGrid vertical={false} strokeOpacity={0.15} /><XAxis dataKey="day" fontSize={11} /><YAxis allowDecimals={false} fontSize={11} width={24} /><Tooltip {...tip} /><Area dataKey="count" stroke="#7c3aed" fill="#7c3aed" fillOpacity={0.15} /></AreaChart></ResponsiveContainer>
+export const Legend = ({ names }: { names: string[] }) => <div className="mt-2 flex flex-wrap gap-3 text-xs text-slate-500">{names.map((n, i) => <span key={n} className="flex items-center gap-1"><i className="h-2 w-2 rounded-full" style={{ background: COLORS[i] }} />{n}</span>)}</div>

@@ -1,0 +1,8 @@
+com\campuscare\backend\controller\ComplaintController.class
+com\campuscare\backend\controller\AuthController.class
+com\campuscare\backend\BackendApplication.class
+com\campuscare\backend\complaint\ComplaintRepository.class
+com\campuscare\backend\user\AppUser.class
+com\campuscare\backend\SecurityConfig.class
+com\campuscare\backend\user\UserRepository.class
+com\campuscare\backend\complaint\Complaint.class
